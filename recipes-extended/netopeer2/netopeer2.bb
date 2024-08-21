@@ -21,15 +21,17 @@ RDEPENDS:${PN} += "bash curl"
 
 EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE:String=Release -DINSTALL_MODULES=OFF -DGENERATE_HOSTKEY=OFF -DMERGE_LISTEN_CONFIG=OFF"
 
-FILES:${PN} += "/usr/share/yang* /usr/share/netopeer2/* /usr/lib/sysrepo-plugind/*"
+FILES:${PN} += "/usr/share/yang* /usr/share/netopeer2/* /usr/lib/sysrepo-plugind/* /opt/slot_default"
 
 do_install:append () {
+    install -d ${D}/opt
+    install -d ${D}/opt/slot_default
+    install -d ${D}/etc/netopeer2
     install -d ${D}/etc/netopeer2/scripts
     install -o root -g root ${S}/scripts/setup.sh ${D}/etc/netopeer2/scripts/setup.sh
     install -o root -g root ${S}/scripts/merge_hostkey.sh ${D}/etc/netopeer2/scripts/merge_hostkey.sh
     install -o root -g root ${S}/scripts/merge_config.sh ${D}/etc/netopeer2/scripts/merge_config.sh
     install -o root -g root ${S}/scripts/remove.sh ${D}/etc/netopeer2/scripts/remove.sh
-    install -d ${D}/etc/netopeer2
     install -d ${D}/etc/init.d
     install -o root -g root ${WORKDIR}/netopeer2-server ${D}/etc/init.d/netopeer2-server
 }

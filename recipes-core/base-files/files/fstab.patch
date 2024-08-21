@@ -1,0 +1,10 @@
+--- old/fstab	2024-08-21 15:18:38.955561760 +0800
++++ new/fstab	2024-08-21 15:23:00.297823957 +0800
+@@ -1,6 +1,7 @@
+ # stock fstab - you probably want to override this with a machine specific one
+ 
+ /dev/root            /                    auto       defaults              1  1
++/dev/ubi1_0          /opt/slot_default    ubifs      defaults,ro           0  0
+ proc                 /proc                proc       defaults              0  0
+ devpts               /dev/pts             devpts     mode=0620,ptmxmode=0666,gid=5      0  0
+ tmpfs                /run                 tmpfs      mode=0755,nodev,nosuid,strictatime 0  0
