@@ -7,10 +7,11 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 inherit cmake pkgconfig python3native python3-dir
 
 SRC_URI = "git://github.com/sysrepo/sysrepo.git;protocol=https;branch=devel \
+    file://sysrepo_SYS_futex_compile_issue.patch \
     file://sysrepo"
 
-PV = "2.1.84+git${SRCPV}"
-SRCREV = "df89fc02e301cc8f2e6b30ec37b990f52ca1d5c4"
+PV = "2.2.60+git${SRCPV}"
+SRCREV = "9333e0fc0ee25b3f955da94ab496287b442b7fcd"
 
 S = "${WORKDIR}/git"
 

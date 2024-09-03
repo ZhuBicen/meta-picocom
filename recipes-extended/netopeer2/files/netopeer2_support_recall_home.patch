@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 0679014..1b0b467 100644
+index 81264ad..19c0b78 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -215,6 +215,7 @@ find_package(LibSSH 0.7.1)
+@@ -221,6 +221,7 @@ find_package(LibSSH 0.7.1)
  if(LIBSSH_FOUND)
      list(APPEND CMAKE_REQUIRED_INCLUDES ${LIBSSH_INCLUDE_DIRS})
      list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBSSH_LIBRARIES})
@@ -11,21 +11,21 @@ index 0679014..1b0b467 100644
  
  # dependencies - libnetconf2 (now, because we need to configure outselves based on it)
 diff --git a/src/main.c b/src/main.c
-index 38f5632..23fa797 100644
+index 6d054f5..0b812a5 100644
 --- a/src/main.c
 +++ b/src/main.c
-@@ -849,6 +849,9 @@ server_data_subscribe(void)
+@@ -871,6 +871,9 @@ server_data_subscribe(void)
  
  #if defined (NC_ENABLED_SSH) || defined (NC_ENABLED_TLS)
      /* subscribe for generic Call Home configuration changes */
 +    xpath = "/ietf-netconf-server:netconf-server/call-home";
 +    SR_CONFIG_SUBSCR(mod_name, xpath, np2srv_ch_cb);
-+
++    
      xpath = "/ietf-netconf-server:netconf-server/call-home/netconf-client";
      SR_CONFIG_SUBSCR(mod_name, xpath, np2srv_ch_client_cb);
  
 diff --git a/src/netconf_server.c b/src/netconf_server.c
-index baba972..b66d6e3 100644
+index baba972..459c394 100644
 --- a/src/netconf_server.c
 +++ b/src/netconf_server.c
 @@ -234,6 +234,55 @@ np2srv_endpt_tcp_params_cb(sr_session_ctx_t *session, uint32_t UNUSED(sub_id), c
