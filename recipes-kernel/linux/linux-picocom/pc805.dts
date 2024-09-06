@@ -5,7 +5,7 @@
 	#size-cells = <1>;
 
 	chosen {
-        bootargs = "console=ttyS0,115200 earlycon=sbi loglevel=8 rootfstype=ubifs ubi.mtd=rootfs root=ubi0:pc805-rootfs";
+        bootargs = "console=ttyS0,115200 earlycon=sbi loglevel=8 rootfstype=ubifs ubi.mtd=rootfs ubi.mtd=slot_default root=ubi0:pc805-rootfs";
 	};
 
 	aliases {
@@ -267,8 +267,12 @@
 				label = "kernel";
 			};
 			partition@rootfs {
-				reg = <0x00800000 0x1f800000>;
+				reg = <0x00800000 0x19400000>;
 				label = "rootfs";
+			};
+			partition@mp_sw {
+				reg = <0x19c00000 0x6400000>;
+				label = "slot_default";
 			};
 		};
 	};

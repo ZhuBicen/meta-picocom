@@ -1,0 +1,13 @@
+/var/log/pico/*.log
+{
+        su root root
+        rotate 4
+        size 10M
+        missingok
+        notifempty
+        delaycompress
+        compress
+        postrotate
+            /usr/bin/killall -HUP rsyslogd 2> /dev/null || true
+        endscript
+}

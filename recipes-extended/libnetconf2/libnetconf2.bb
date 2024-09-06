@@ -7,11 +7,11 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 inherit cmake pkgconfig
 
-SRCREV = "1f50231323e9dd198cf7c120563897f42b8cae1d"
+SRCREV = "19edc89a7e80ef82b004af3788945bf2193b2447"
 SRC_URI = "git://github.com/CESNET/libnetconf2.git;protocol=https;branch=devel \
     file://libnetconf2_support_recall_home.patch"
 
-PV = "2.1.18+git${SRCPV}"
+PV = "2.1.31+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
