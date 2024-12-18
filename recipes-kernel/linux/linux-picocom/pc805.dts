@@ -127,7 +127,19 @@
 		interrupt-parent = <&plic0>;
 		status = "okay";
 	};
-
+        uart@8214000 {
+                compatible = "snps,dw-apb-uart";
+                reg = <0x8212000 0x100>;
+                /*clock-frequency = <325000000>;*/
+                clocks = <&per_clk>;
+                clock-names = "baudclk";
+                interrupts = <71>;
+        reg-offset = <0>;
+                reg-shift = <2>;
+                reg-io-width = <4>;
+                interrupt-parent = <&plic0>;
+                status = "okay";
+        };
 	sdma: dmac@10C00000 {
 		compatible = "snps,axi-dma-1.01a";
 		reg = <0x10C00000 0x10000>;
